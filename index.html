@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light}</style>
+<title>Khaled Ali Elsayed | Backend Developer</title>
+<meta name="description" content="Portfolio of Khaled Ali Elsayed, a backend developer in Cairo, Egypt. NestJS, Express, FastAPI, MongoDB and PostgreSQL projects.">
+<meta property="og:title" content="Khaled Ali Elsayed | Backend Developer">
+<meta property="og:description" content="APIs with auth, payments, queues and tests. NestJS, Express, FastAPI, MongoDB and PostgreSQL.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://khaledali1234.github.io/khaled.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B5FD1'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='700' text-anchor='middle' fill='white'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: 'var(--bg)', surface: 'var(--surface)', ink: 'var(--ink)', muted: 'var(--muted)',
+          line: 'var(--line)', accent: 'var(--accent)', accentink: 'var(--accent-ink)', ok: 'var(--ok)'
+        },
+        fontFamily: {
+          display: ['"Bricolage Grotesque"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          body: ['"IBM Plex Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  /* Layout concept: the page reads like API documentation. The hero is a live-looking HTTP response,
+     projects are a result list with endpoint labels, and every number comes from the repositories. */
+  :root {
+    --bg: #EDF0F3;
+    --surface: #FFFFFF;
+    --ink: #0F1923;
+    --muted: #55616E;
+    --line: #D3D9E0;
+    --accent: #0B5FD1;
+    --accent-ink: #FFFFFF;
+    --ok: #0B7A3E;
+    --code-bg: #0F1923;
+    --code-ink: #DCE4EC;
+    --code-dim: #8796A5;
+    --code-key: #7DB4FF;
+    --code-str: #9AD9B0;
+    --code-ok: #5FD39B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0C1117; --surface: #131A22; --ink: #E7ECF1; --muted: #9AA7B4; --line: #25303B;
+      --accent: #6AAAFF; --accent-ink: #06121F; --ok: #4CC38A;
+      --code-bg: #080C11; --code-ink: #DCE4EC; --code-dim: #8796A5; --code-key: #7DB4FF; --code-str: #9AD9B0; --code-ok: #5FD39B;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0C1117; --surface: #131A22; --ink: #E7ECF1; --muted: #9AA7B4; --line: #25303B;
+    --accent: #6AAAFF; --accent-ink: #06121F; --ok: #4CC38A;
+    --code-bg: #080C11; --code-ink: #DCE4EC; --code-dim: #8796A5; --code-key: #7DB4FF; --code-str: #9AD9B0; --code-ok: #5FD39B;
+    color-scheme: dark;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .wrap {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  @media (min-width: 640px) { .wrap { padding-left: max(28px, env(safe-area-inset-left, 0px)); padding-right: max(28px, env(safe-area-inset-right, 0px)); } }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif; text-wrap: balance; letter-spacing: -0.02em; }
+  .label { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .chip { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.75rem; line-height: 1; padding: 0.4rem 0.55rem; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: transparent; white-space: nowrap; }
+  .status { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.75rem; color: var(--ok); }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.1rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; border: 1px solid var(--line); color: var(--ink); background: var(--surface); text-decoration: none; cursor: pointer; font-family: inherit; }
+  .btn:hover { border-color: var(--accent); }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn-primary:hover { filter: brightness(1.08); }
+  a.link { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a.link:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .code { background: var(--code-bg); color: var(--code-ink); font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.82rem; line-height: 1.75; border-radius: 8px; overflow-x: auto; }
+  .code .k { color: var(--code-key); }
+  .code .s { color: var(--code-str); }
+  .code .d { color: var(--code-dim); }
+  .code .ok { color: var(--code-ok); }
+  .rule { border-top: 1px solid var(--line); }
+  .bullets li { position: relative; padding-left: 1.1rem; }
+  .bullets li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 0.45rem; height: 1px; background: var(--accent); }
+  .avatar { width: 88px; height: 88px; border-radius: 9999px; object-fit: cover; border: 1px solid var(--line); background: #FFFFFF; flex: none; }
+  @media (min-width: 640px) { .avatar { width: 112px; height: 112px; } }
+  .tabnum { font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: no-preference) { .btn { transition: border-color .15s, filter .15s; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between gap-4 py-5">
+    <a href="#top" class="font-display font-bold text-lg tracking-tight" style="text-decoration:none;color:var(--ink)">Khaled Ali</a>
+    <nav class="flex items-center gap-4 sm:gap-6 text-sm" aria-label="Sections">
+      <a href="#projects" class="hidden sm:inline" style="color:var(--muted);text-decoration:none">Projects</a>
+      <a href="#stack" class="hidden sm:inline" style="color:var(--muted);text-decoration:none">Stack</a>
+      <a href="#education" class="hidden sm:inline" style="color:var(--muted);text-decoration:none">Education</a>
+      <a href="#contact" style="color:var(--muted);text-decoration:none">Contact</a>
+      <button id="theme-toggle" type="button" class="chip" style="cursor:pointer" aria-label="Switch between light and dark theme">Theme</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-8 pb-16 sm:pt-14 sm:pb-24">
+    <div class="lg:col-span-6 min-w-0">
+      <div class="flex items-center gap-4 mb-6">
+        <img class="avatar" src="khaled.jpg" width="112" height="112" alt="Portrait of Khaled Ali Elsayed">
+        <p class="label">Backend developer · Cairo, Egypt</p>
+      </div>
+      <h1 class="font-display font-extrabold text-5xl sm:text-6xl leading-[0.98]">Khaled Ali Elsayed</h1>
+      <p class="font-display text-2xl sm:text-3xl font-semibold mt-5 leading-tight" style="color:var(--ink)">I build APIs with auth, payments, queues and tests.</p>
+      <p class="mt-5 max-w-xl" style="color:var(--muted)">
+        Node.js, NestJS and FastAPI on MongoDB and PostgreSQL. I study Computer Science at Cairo University, graduate in January 2027, and I am looking for a backend developer role in Egypt.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a class="btn btn-primary" href="https://github.com/KhaledAli1234" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/khaled-ali-48a3a7357" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="Khaled_Ali_Elsayed_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-6 min-w-0">
+      <div class="code p-5 sm:p-6" role="img" aria-label="An HTTP response describing Khaled Ali: backend developer, languages, frameworks, databases, education and availability">
+<pre style="margin:0;font:inherit"><span class="d">GET</span> /khaled-ali
+<span class="ok">HTTP/1.1 200 OK</span>
+<span class="d">Content-Type: application/json</span>
+
+{
+  <span class="k">"role"</span>: <span class="s">"Backend Developer"</span>,
+  <span class="k">"languages"</span>: [<span class="s">"JavaScript"</span>, <span class="s">"TypeScript"</span>, <span class="s">"Python"</span>],
+  <span class="k">"frameworks"</span>: [<span class="s">"NestJS"</span>, <span class="s">"Express"</span>, <span class="s">"FastAPI"</span>],
+  <span class="k">"databases"</span>: [<span class="s">"MongoDB"</span>, <span class="s">"PostgreSQL"</span>, <span class="s">"Redis"</span>],
+  <span class="k">"education"</span>: <span class="s">"B.Sc. Computer Science, Cairo University"</span>,
+  <span class="k">"graduates"</span>: <span class="s">"2027-01"</span>,
+  <span class="k">"open_to_work"</span>: <span class="ok">true</span>
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="pb-16 sm:pb-24">
+    <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 pb-6">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl">Projects</h2>
+      <p class="label">GET /projects · 5 results</p>
+    </div>
+
+    <!-- Featured: TeamFlow -->
+    <article class="rule py-8 sm:py-10 grid lg:grid-cols-12 gap-6 lg:gap-10">
+      <div class="lg:col-span-4 min-w-0 flex flex-col gap-3">
+        <p class="label">/teamflow</p>
+        <p class="status tabnum">200 · 43 endpoints · 126 tests</p>
+        <p class="text-sm tabnum" style="color:var(--muted)">Oct 2026 – Nov 2026</p>
+      </div>
+      <div class="lg:col-span-8 min-w-0">
+        <h3 class="font-display font-bold text-2xl sm:text-3xl">TeamFlow</h3>
+        <p class="mt-3 max-w-2xl" style="color:var(--muted)">A project and task management API in the style of Trello and Jira. Teams, projects, tasks, comments, an activity log, notifications and progress dashboards, with role-based permissions at team and project level.</p>
+        <ul class="bullets mt-5 grid gap-2 max-w-2xl">
+          <li>Refresh token rotation with family revocation: reusing an old token revokes every session for that user.</li>
+          <li>Argon2id password hashing and account lockout after repeated failed logins.</li>
+          <li>Row locks with <span class="font-mono text-sm">SELECT … FOR UPDATE</span> so concurrent requests cannot leave a team without an admin.</li>
+          <li>Password-reset email sent by a Celery worker through Redis, off the request path.</li>
+          <li>Router → Service → Repository layers, Alembic migrations, GitHub Actions CI and a Docker Compose setup.</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-6">
+          <span class="chip">FastAPI</span><span class="chip">PostgreSQL 16</span><span class="chip">SQLAlchemy 2.0</span><span class="chip">Alembic</span><span class="chip">Celery</span><span class="chip">Redis</span><span class="chip">pytest</span><span class="chip">Docker</span>
+        </div>
+        <p class="mt-6"><a class="link font-semibold" href="https://github.com/KhaledAli1234/teamflow" target="_blank" rel="noopener">View on GitHub</a></p>
+      </div>
+    </article>
+
+    <!-- Featured: Auto-Care -->
+    <article class="rule py-8 sm:py-10 grid lg:grid-cols-12 gap-6 lg:gap-10">
+      <div class="lg:col-span-4 min-w-0 flex flex-col gap-3">
+        <p class="label">/auto-care</p>
+        <p class="status tabnum">200 · 78 endpoints · 14 modules</p>
+        <p class="text-sm tabnum" style="color:var(--muted)">Feb 2026 – Jul 2026 · Team graduation project</p>
+      </div>
+      <div class="lg:col-span-8 min-w-0">
+        <h3 class="font-display font-bold text-2xl sm:text-3xl">Auto Care</h3>
+        <p class="mt-3 max-w-2xl" style="color:var(--muted)">A full-stack car management platform. The phone records a trip, three machine learning services score the driving, predict vehicle health and estimate fuel use, and a chatbot answers questions from the driver's own data.</p>
+        <ul class="bullets mt-5 grid gap-2 max-w-2xl">
+          <li>I built the NestJS backend: JWT authentication with role-based access, and the vehicle, maintenance, fuel-log and GPS trip modules.</li>
+          <li>I also built support tickets and Socket.IO notifications between drivers and admins.</li>
+          <li>I integrated the Flask and Groq assistant (Llama 3.3 70B) as a microservice and containerized every service with Docker.</li>
+          <li>A unified service fans each trip out to three models: Random Forest for driving style, Linear Regression for vehicle health and Gradient Boosting for fuel use.</li>
+          <li>The client is a React Native app built with Expo that also runs on the web.</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-6">
+          <span class="chip">NestJS</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">Socket.IO</span><span class="chip">Expo</span><span class="chip">Flask</span><span class="chip">scikit-learn</span><span class="chip">Docker</span>
+        </div>
+        <p class="mt-6"><a class="link font-semibold" href="https://github.com/KhaledAli1234/Auto-Care" target="_blank" rel="noopener">View on GitHub</a></p>
+      </div>
+    </article>
+
+    <!-- Three smaller projects -->
+    <div class="rule pt-8 sm:pt-10 grid lg:grid-cols-3 gap-5">
+
+      <article class="min-w-0 flex flex-col p-6 border rounded-lg" style="background:var(--surface);border-color:var(--line)">
+        <p class="label">/ecommerce-nest</p>
+        <p class="status tabnum mt-2">200 · 59 endpoints</p>
+        <p class="text-sm tabnum" style="color:var(--muted)">Oct 2025 – Nov 2025</p>
+        <h3 class="font-display font-bold text-xl mt-4">E-Commerce API</h3>
+        <p class="mt-2 text-[0.95rem]" style="color:var(--muted)">Catalog, cart, coupons and orders with card or cash payment.</p>
+        <ul class="bullets mt-4 grid gap-2 text-[0.95rem]">
+          <li>Stripe Checkout with a webhook that moves orders from pending to placed, and refunds on cancellation.</li>
+          <li>Percent and amount coupons with a per-user usage limit.</li>
+          <li>Redis-cached product listing using a custom TTL decorator.</li>
+          <li>Live stock updates over Socket.IO and a GraphQL orders query.</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-5">
+          <span class="chip">NestJS</span><span class="chip">MongoDB</span><span class="chip">Stripe</span><span class="chip">AWS S3</span>
+        </div>
+        <p class="mt-auto pt-5"><a class="link font-semibold" href="https://github.com/KhaledAli1234/Ecommerce-Nest" target="_blank" rel="noopener">View on GitHub</a></p>
+      </article>
+
+      <article class="min-w-0 flex flex-col p-6 border rounded-lg" style="background:var(--surface);border-color:var(--line)">
+        <p class="label">/social-app</p>
+        <p class="status tabnum mt-2">200 · REST + GraphQL</p>
+        <p class="text-sm tabnum" style="color:var(--muted)">Sep 2025 – Oct 2025</p>
+        <h3 class="font-display font-bold text-xl mt-4">Social App</h3>
+        <p class="mt-2 text-[0.95rem]" style="color:var(--muted)">A social network backend with real-time chat.</p>
+        <ul class="bullets mt-4 grid gap-2 text-[0.95rem]">
+          <li>Posts with visibility levels, likes and threaded comments.</li>
+          <li>Friend requests, blocking, direct messages and group chat rooms over Socket.IO.</li>
+          <li>Two-step verification, Google sign-in and admin roles.</li>
+          <li>Uploads to S3 with pre-signed download URLs.</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-5">
+          <span class="chip">Express 5</span><span class="chip">TypeScript</span><span class="chip">MongoDB</span><span class="chip">Zod</span>
+        </div>
+        <p class="mt-auto pt-5"><a class="link font-semibold" href="https://github.com/KhaledAli1234/Social_App" target="_blank" rel="noopener">View on GitHub</a></p>
+      </article>
+
+      <article class="min-w-0 flex flex-col p-6 border rounded-lg" style="background:var(--surface);border-color:var(--line)">
+        <p class="label">/sara7a-app</p>
+        <p class="status tabnum mt-2">200 · REST</p>
+        <p class="text-sm tabnum" style="color:var(--muted)">Aug 2025 – Sep 2025</p>
+        <h3 class="font-display font-bold text-xl mt-4">Sara7a</h3>
+        <p class="mt-2 text-[0.95rem]" style="color:var(--muted)">An anonymous messaging API focused on account security.</p>
+        <ul class="bullets mt-4 grid gap-2 text-[0.95rem]">
+          <li>Email confirmation and password reset with hashed OTP codes.</li>
+          <li>Token revocation on logout and a 5-minute ban after 5 failed logins.</li>
+          <li>Encrypted phone numbers, Joi validation and rate limiting.</li>
+          <li>Image uploads to Cloudinary and a scheduled cleanup of expired tokens.</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-5">
+          <span class="chip">Express 5</span><span class="chip">MongoDB</span><span class="chip">Joi</span><span class="chip">Cloudinary</span>
+        </div>
+        <p class="mt-auto pt-5"><a class="link font-semibold" href="https://github.com/KhaledAli1234/Sara7a_App" target="_blank" rel="noopener">View on GitHub</a></p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section id="stack" class="rule pt-10 pb-16 sm:pb-24">
+    <h2 class="font-display font-bold text-3xl sm:text-4xl pb-8">Stack</h2>
+    <dl class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
+      <div class="min-w-0"><dt class="label mb-3">Languages</dt><dd class="flex flex-wrap gap-2"><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Python</span><span class="chip">Java</span><span class="chip">SQL</span></dd></div>
+      <div class="min-w-0"><dt class="label mb-3">Runtime and frameworks</dt><dd class="flex flex-wrap gap-2"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">NestJS</span><span class="chip">FastAPI</span><span class="chip">Flask</span></dd></div>
+      <div class="min-w-0"><dt class="label mb-3">Databases and caching</dt><dd class="flex flex-wrap gap-2"><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">SQLAlchemy</span><span class="chip">Alembic</span></dd></div>
+      <div class="min-w-0"><dt class="label mb-3">APIs and real-time</dt><dd class="flex flex-wrap gap-2"><span class="chip">REST</span><span class="chip">GraphQL</span><span class="chip">Socket.IO</span><span class="chip">Celery</span><span class="chip">Stripe</span></dd></div>
+      <div class="min-w-0"><dt class="label mb-3">Auth and security</dt><dd class="flex flex-wrap gap-2"><span class="chip">JWT</span><span class="chip">Refresh token rotation</span><span class="chip">Argon2</span><span class="chip">RBAC</span><span class="chip">Rate limiting</span></dd></div>
+      <div class="min-w-0"><dt class="label mb-3">Testing and DevOps</dt><dd class="flex flex-wrap gap-2"><span class="chip">Pytest</span><span class="chip">Ruff</span><span class="chip">GitHub Actions</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Postman</span><span class="chip">Swagger</span><span class="chip">Render</span><span class="chip">Vercel</span></dd></div>
+    </dl>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="rule pt-10 pb-16 sm:pb-24">
+    <h2 class="font-display font-bold text-3xl sm:text-4xl pb-8">Education</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="min-w-0">
+        <p class="label tabnum">Sep 2022 – Jan 2027 (expected)</p>
+        <h3 class="font-display font-bold text-xl mt-2">B.Sc. Computer Science</h3>
+        <p style="color:var(--muted)">Faculty of Science, Cairo University</p>
+        <p class="mt-3 text-[0.95rem]" style="color:var(--muted)">Relevant coursework: data structures, object-oriented programming, computer networks, artificial intelligence and compilers.</p>
+      </div>
+      <div class="min-w-0">
+        <p class="label tabnum">May – November 2025</p>
+        <h3 class="font-display font-bold text-xl mt-2">Backend Web Development Diploma</h3>
+        <p style="color:var(--muted)">Route Academy</p>
+        <p class="mt-3 text-[0.95rem]" style="color:var(--muted)">Backend development with Node.js, Express, NestJS and MongoDB.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="rule pt-10 pb-16 sm:pb-24">
+    <h2 class="font-display font-bold text-3xl sm:text-4xl">Contact</h2>
+    <p class="mt-3 max-w-xl" style="color:var(--muted)">I am open to backend developer roles in Egypt. You can reach me by email or phone.</p>
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      <span id="email" class="code px-4 py-3 select-all" style="display:inline-block">kemam982@gmail.com</span>
+      <button id="copy-email" type="button" class="btn">Copy email</button>
+      <span id="phone" class="code px-4 py-3 select-all" style="display:inline-block">01159290022</span>
+      <a class="btn btn-primary" href="Khaled_Ali_Elsayed_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </div>
+    <p id="copy-status" class="mt-3 text-sm" style="color:var(--muted)" role="status" aria-live="polite"></p>
+    <div class="flex flex-wrap gap-3 mt-4">
+      <a class="btn" href="https://github.com/KhaledAli1234" target="_blank" rel="noopener">github.com/KhaledAli1234</a>
+      <a class="btn" href="https://www.linkedin.com/in/khaled-ali-48a3a7357" target="_blank" rel="noopener">linkedin.com/in/khaled-ali-48a3a7357</a>
+    </div>
+  </section>
+
+  <footer class="rule py-8 flex flex-wrap justify-between gap-2 text-sm" style="color:var(--muted)">
+    <span>© 2026 Khaled Ali Elsayed</span>
+    <span class="label">Built with HTML and Tailwind</span>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+
+    // Theme toggle: follows the system until the viewer picks one.
+    try {
+      var saved = localStorage.getItem('portfolio-theme');
+      if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+    } catch (e) {}
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      var current = root.getAttribute('data-theme') ||
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+    });
+
+    // Smooth in-page navigation that also works inside the viewer frame.
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var el = document.getElementById(a.getAttribute('href').slice(1));
+        if (!el) return;
+        e.preventDefault();
+        var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        el.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+      });
+    });
+
+    // Copy email with a fallback that selects the text.
+    var emailEl = document.getElementById('email');
+    var statusEl = document.getElementById('copy-status');
+    function selectEmail() {
+      var range = document.createRange();
+      range.selectNodeContents(emailEl);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+    document.getElementById('copy-email').addEventListener('click', function () {
+      var text = emailEl.textContent.trim();
+      var done = function () { statusEl.textContent = 'Email copied.'; };
+      var fail = function () { selectEmail(); statusEl.textContent = 'Email selected. Press Ctrl+C or Cmd+C to copy.'; };
+      try {
+        navigator.clipboard.writeText(text).then(done, fail);
+      } catch (e) { fail(); }
+    });
+  })();
+</script>
+</body>
+</html>
