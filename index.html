@@ -1,77 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>:root{color-scheme:light}</style>
 <title>Khaled Ali Elsayed | Backend Developer</title>
-<meta name="description" content="Portfolio of Khaled Ali Elsayed, a backend developer in Cairo, Egypt. NestJS, Express, FastAPI, MongoDB and PostgreSQL projects.">
-<meta property="og:title" content="Khaled Ali Elsayed | Backend Developer">
-<meta property="og:description" content="APIs with auth, payments, queues and tests. NestJS, Express, FastAPI, MongoDB and PostgreSQL.">
+<meta name="description" content="Portfolio of Khaled Ali Elsayed, a backend developer in Cairo, Egypt. NestJS, Express and FastAPI projects on MongoDB and PostgreSQL.">
+<meta name="theme-color" content="#F6F8FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#090E18" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://khaledali1234.github.io/">
+<meta property="og:title" content="Khaled Ali Elsayed | Backend Developer">
+<meta property="og:description" content="APIs with auth, payments, queues and tests. NestJS, Express and FastAPI on MongoDB and PostgreSQL.">
 <meta property="og:image" content="https://khaledali1234.github.io/khaled.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B5FD1'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='700' text-anchor='middle' fill='white'%3EK%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://khaledali1234.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Khaled Ali Elsayed",
+  "url": "https://khaledali1234.github.io/",
+  "jobTitle": "Backend Developer",
+  "address": { "@type": "PostalAddress", "addressLocality": "Cairo", "addressCountry": "EG" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Cairo University" },
+  "sameAs": ["https://github.com/KhaledAli1234", "https://www.linkedin.com/in/khaled-ali-48a3a7357"]
+}
+</script>
 <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          bg: 'var(--bg)', surface: 'var(--surface)', ink: 'var(--ink)', muted: 'var(--muted)',
-          line: 'var(--line)', accent: 'var(--accent)', accentink: 'var(--accent-ink)', ok: 'var(--ok)'
-        },
-        fontFamily: {
-          display: ['"Bricolage Grotesque"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-          body: ['"IBM Plex Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-          mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
-        }
-      }
-    }
-  }
+  /* Apply the saved theme before first paint to avoid a flash. */
+  try { var t = localStorage.getItem('portfolio-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
 </script>
 <style>
-  /* Layout concept: the page reads like API documentation. The hero is a live-looking HTTP response,
-     projects are a result list with endpoint labels, and every number comes from the repositories. */
+  /* Design system
+     Colour: cool neutrals plus ONE accent (blue). Green appears only as a live-status signal.
+     Type: Bricolage Grotesque (headings), IBM Plex Sans (text), JetBrains Mono (labels and code).
+     Buttons: three kinds only. Primary (filled), secondary (outlined), small secondary (inside rows and cards). */
+  @font-face { font-family: "Bricolage Grotesque"; src: url("fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+  @font-face { font-family: "IBM Plex Sans"; src: url("fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "IBM Plex Sans"; src: url("fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: "IBM Plex Sans"; src: url("fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: swap; }
+
   :root {
-    --bg: #EDF0F3;
+    color-scheme: light;
+    --bg: #F6F8FB;
     --surface: #FFFFFF;
-    --ink: #0F1923;
-    --muted: #55616E;
-    --line: #D3D9E0;
-    --accent: #0B5FD1;
+    --surface-2: #EEF2F7;
+    --ink: #0B1220;
+    --ink-2: #2B3649;
+    --muted: #566176;
+    --line: #E1E6EE;
+    --line-strong: #CAD2DF;
+    --accent: #2250E8;
+    --accent-hover: #1A41C4;
     --accent-ink: #FFFFFF;
-    --ok: #0B7A3E;
-    --code-bg: #0F1923;
-    --code-ink: #DCE4EC;
-    --code-dim: #8796A5;
-    --code-key: #7DB4FF;
-    --code-str: #9AD9B0;
-    --code-ok: #5FD39B;
+    --accent-soft: #E8EEFF;
+    --ok: #12805C;
+    --code-bg: #0B1220;
+    --code-ink: #D5DDEB;
+    --code-dim: #8794AB;
+    --code-key: #8FB0FF;
+    --code-ok: #4FD6A0;
+    --code-line: rgba(255, 255, 255, 0.09);
+    --shadow: 0 1px 2px rgba(11, 18, 32, 0.05), 0 12px 32px rgba(11, 18, 32, 0.08);
+    --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #0C1117; --surface: #131A22; --ink: #E7ECF1; --muted: #9AA7B4; --line: #25303B;
-      --accent: #6AAAFF; --accent-ink: #06121F; --ok: #4CC38A;
-      --code-bg: #080C11; --code-ink: #DCE4EC; --code-dim: #8796A5; --code-key: #7DB4FF; --code-str: #9AD9B0; --code-ok: #5FD39B;
       color-scheme: dark;
+      --bg: #090E18; --surface: #0F1626; --surface-2: #161F33;
+      --ink: #EAF0FA; --ink-2: #C3CDDF; --muted: #9AA6BB;
+      --line: #1E2840; --line-strong: #2C3856;
+      --accent: #7B9CFF; --accent-hover: #9BB4FF; --accent-ink: #07102A; --accent-soft: #16224A;
+      --ok: #3DD6A0;
+      --code-bg: #060A12; --code-ink: #D5DDEB; --code-dim: #8794AB; --code-key: #8FB0FF; --code-ok: #4FD6A0;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
     }
   }
   :root[data-theme="dark"] {
-    --bg: #0C1117; --surface: #131A22; --ink: #E7ECF1; --muted: #9AA7B4; --line: #25303B;
-    --accent: #6AAAFF; --accent-ink: #06121F; --ok: #4CC38A;
-    --code-bg: #080C11; --code-ink: #DCE4EC; --code-dim: #8796A5; --code-key: #7DB4FF; --code-str: #9AD9B0; --code-ok: #5FD39B;
     color-scheme: dark;
+    --bg: #090E18; --surface: #0F1626; --surface-2: #161F33;
+    --ink: #EAF0FA; --ink-2: #C3CDDF; --muted: #9AA6BB;
+    --line: #1E2840; --line-strong: #2C3856;
+    --accent: #7B9CFF; --accent-hover: #9BB4FF; --accent-ink: #07102A; --accent-soft: #16224A;
+    --ok: #3DD6A0;
+    --code-bg: #060A12; --code-ink: #D5DDEB; --code-dim: #8794AB; --code-key: #8FB0FF; --code-ok: #4FD6A0;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
   }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   body {
+    margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
+    font: 400 16px/1.65 var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 30; }
+  img, svg { display: block; max-width: 100%; }
+  h1, h2, h3, p, ul, dl, dd, figure { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .skip { position: absolute; left: 16px; top: -64px; z-index: 50; background: var(--accent); color: var(--accent-ink); padding: 10px 14px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .skip:focus { top: calc(env(safe-area-inset-top, 0px) + 12px); }
+
   .wrap {
     width: 100%;
     max-width: 72rem;
@@ -80,301 +120,507 @@
     padding-right: max(16px, env(safe-area-inset-right, 0px));
   }
   @media (min-width: 640px) { .wrap { padding-left: max(28px, env(safe-area-inset-left, 0px)); padding-right: max(28px, env(safe-area-inset-right, 0px)); } }
-  h1, h2, h3 { font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif; text-wrap: balance; letter-spacing: -0.02em; }
-  .label { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-  .chip { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.75rem; line-height: 1; padding: 0.4rem 0.55rem; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: transparent; white-space: nowrap; }
-  .status { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.75rem; color: var(--ok); }
-  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.1rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; border: 1px solid var(--line); color: var(--ink); background: var(--surface); text-decoration: none; cursor: pointer; font-family: inherit; }
-  .btn:hover { border-color: var(--accent); }
-  .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-  .btn-primary:hover { filter: brightness(1.08); }
-  a.link { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-  a.link:hover { text-decoration-thickness: 2px; }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-  .code { background: var(--code-bg); color: var(--code-ink); font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.82rem; line-height: 1.75; border-radius: 8px; overflow-x: auto; }
-  .code .k { color: var(--code-key); }
-  .code .s { color: var(--code-str); }
-  .code .d { color: var(--code-dim); }
-  .code .ok { color: var(--code-ok); }
-  .rule { border-top: 1px solid var(--line); }
-  .bullets li { position: relative; padding-left: 1.1rem; }
-  .bullets li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 0.45rem; height: 1px; background: var(--accent); }
-  .avatar { width: 88px; height: 88px; border-radius: 9999px; object-fit: cover; border: 1px solid var(--line); background: #FFFFFF; flex: none; }
+
+  .icon { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    height: 44px; padding: 0 18px; border-radius: 10px;
+    font: 600 15px/1 var(--font-body); text-decoration: none; cursor: pointer;
+    border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink);
+    white-space: nowrap;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn--primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn--primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--accent-ink); }
+  .btn--sm { height: 36px; padding: 0 12px; font-size: 14px; border-radius: 8px; }
+  .btn .icon { width: 16px; height: 16px; }
+  .btn--sm .icon { width: 15px; height: 15px; }
+  @media (prefers-reduced-motion: no-preference) { .btn, .icon-btn, .topnav a { transition: background-color .15s, border-color .15s, color .15s; } }
+
+  .icon-btn { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); cursor: pointer; padding: 0; }
+  .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .icon-btn .i-sun { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .icon-btn .i-sun { display: block; }
+    :root:not([data-theme="light"]) .icon-btn .i-moon { display: none; }
+  }
+  :root[data-theme="dark"] .icon-btn .i-sun { display: block; }
+  :root[data-theme="dark"] .icon-btn .i-moon { display: none; }
+
+  /* Top bar */
+  .topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+  @supports (background: color-mix(in srgb, red 50%, transparent)) {
+    .topbar { background: color-mix(in srgb, var(--bg) 86%, transparent); -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px); }
+  }
+  .topbar__in { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 64px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 700 17px/1 var(--font-display); letter-spacing: -0.01em; }
+  .brand__mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); font: 700 13px/1 var(--font-mono); letter-spacing: 0; }
+  .brand__name { display: none; }
+  @media (min-width: 640px) { .brand__name { display: inline; } }
+  .topbar__right { display: flex; align-items: center; gap: 6px; }
+  .topnav { display: flex; align-items: center; gap: 2px; }
+  .topnav a { padding: 8px 10px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: var(--muted); }
+  .topnav a:hover { color: var(--ink); background: var(--surface-2); }
+  .topnav a[aria-current="true"] { color: var(--accent); background: var(--accent-soft); }
+  @media (max-width: 479px) { .topbar__right { gap: 4px; } .topnav { gap: 0; } .topnav a { padding: 8px 7px; font-size: 13.5px; } }
+  @media (max-width: 389px) { .topnav a[href="#education"] { display: none; } }
+  @media (min-width: 640px) { .topnav a { padding: 8px 12px; font-size: 15px; } .topbar__right { gap: 10px; } }
+
+  /* Sections */
+  main > section { scroll-margin-top: 72px; }
+  .section { padding-block: clamp(56px, 8vw, 96px); border-top: 1px solid var(--line); }
+  .section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; margin-bottom: clamp(24px, 4vw, 40px); }
+  h2 { font: 700 clamp(1.75rem, 3.2vw, 2.25rem)/1.15 var(--font-display); letter-spacing: -0.02em; text-wrap: balance; }
+  .code-inline { font-family: var(--font-mono); font-size: 0.9em; }
+  .sprite { position: absolute; }
+  .endpoint { font: 500 12px/1.4 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .label { font: 500 12px/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+  /* Hero */
+  .hero { padding-block: clamp(36px, 7vw, 88px); }
+  .hero__grid { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 960px) { .hero__grid { grid-template-columns: 1fr 1fr; gap: 56px; } }
+  .hero__copy { min-width: 0; }
+  .identity { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .avatar { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; background: #fff; border: 1px solid var(--line-strong); box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--line); flex: none; }
   @media (min-width: 640px) { .avatar { width: 112px; height: 112px; } }
-  .tabnum { font-variant-numeric: tabular-nums; }
-  @media (prefers-reduced-motion: no-preference) { .btn { transition: border-color .15s, filter .15s; } }
+  .identity__text { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--surface); font: 500 13px/1.2 var(--font-body); color: var(--ink-2); }
+  .pill__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ok) 22%, transparent); }
+  .where { display: inline-flex; align-items: center; gap: 6px; font: 500 12px/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .where .icon { width: 14px; height: 14px; }
+  h1 { font: 800 clamp(2.5rem, 6.4vw, 4rem)/1.02 var(--font-display); letter-spacing: -0.03em; text-wrap: balance; }
+  .lead { margin-top: 16px; font: 600 clamp(1.3rem, 2.6vw, 1.75rem)/1.25 var(--font-display); letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
+  .intro { margin-top: 16px; max-width: 34rem; color: var(--muted); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .socials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+
+  /* API panel */
+  .api { background: var(--code-bg); color: var(--code-ink); border: 1px solid var(--code-line); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; min-width: 0; }
+  .api__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid var(--code-line); font: 500 12.5px/1.2 var(--font-mono); }
+  .api__req { display: flex; gap: 10px; min-width: 0; }
+  .api__method { color: var(--code-key); font-weight: 700; }
+  .api__status { color: var(--code-ok); white-space: nowrap; }
+  .api__body { margin: 0; padding: 18px; font: 400 12px/1.8 var(--font-mono); overflow-x: auto; }
+  @media (min-width: 640px) { .api__body { padding: 22px 22px; font-size: 13px; } }
+  .api .k { color: var(--code-key); }
+  .api .d { color: var(--code-dim); }
+  .api .ok { color: var(--code-ok); }
+
+  /* Projects */
+  .project { display: grid; gap: 22px; padding-block: 36px; border-top: 1px solid var(--line); }
+  .project:first-child { border-top: 0; padding-top: 0; }
+  .project:last-child { padding-bottom: 0; }
+  @media (min-width: 960px) { .project { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 56px; } }
+  .project__name { font: 700 clamp(1.5rem, 2.6vw, 1.85rem)/1.15 var(--font-display); letter-spacing: -0.02em; }
+  .facts { display: grid; gap: 12px; margin-top: 16px; }
+  .facts div { display: grid; gap: 2px; }
+  .facts dt { font: 500 11px/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .facts dd { font-size: 14.5px; color: var(--ink); }
+  .project__desc { color: var(--ink-2); max-width: 42rem; }
+  .points { display: grid; gap: 10px; margin-top: 18px; max-width: 42rem; }
+  .points li { position: relative; padding-left: 20px; color: var(--ink-2); font-size: 15.5px; }
+  .points li::before { content: ""; position: absolute; left: 0; top: 0.8em; width: 10px; height: 2px; border-radius: 2px; background: var(--accent); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .tag { font: 500 12.5px/1 var(--font-mono); padding: 7px 9px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-2); white-space: nowrap; }
+  .project__links { margin-top: 22px; }
+
+  /* Skills */
+  .skills { display: grid; gap: 32px 40px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 960px) { .skills { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .group h3 { font: 500 12px/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .group .tags { margin-top: 0; }
+
+  /* Education */
+  .edu { display: grid; gap: 40px; }
+  @media (min-width: 768px) { .edu { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; } }
+  .edu h3 { font: 700 1.35rem/1.25 var(--font-display); letter-spacing: -0.01em; margin-top: 8px; }
+  .edu p { margin-top: 4px; color: var(--muted); }
+  .edu .note { margin-top: 12px; color: var(--ink-2); font-size: 15.5px; }
+
+  /* Contact */
+  .contact { display: grid; gap: 32px; }
+  @media (min-width: 960px) { .contact { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; } }
+  .contact__lead { color: var(--muted); max-width: 26rem; }
+  .rows { display: grid; gap: 10px; }
+  .row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 12px 14px 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  .row > .icon { width: 20px; height: 20px; color: var(--accent); }
+  .row__text { min-width: 0; }
+  .row__label { display: block; font: 500 11px/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .row__value { display: block; font-size: 15.5px; font-weight: 500; overflow-wrap: anywhere; text-decoration: none; color: var(--ink); }
+  a.row__value:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .row .btn { min-width: 84px; }
+
+  .footer { border-top: 1px solid var(--line); padding-block: 28px; }
+  .footer__in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; font-size: 14px; color: var(--muted); }
+  .footer a { color: var(--muted); text-underline-offset: 3px; }
+  .footer a:hover { color: var(--accent); }
 </style>
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#main">Skip to content</a>
 
-  <!-- Header -->
-  <header class="flex items-center justify-between gap-4 py-5">
-    <a href="#top" class="font-display font-bold text-lg tracking-tight" style="text-decoration:none;color:var(--ink)">Khaled Ali</a>
-    <nav class="flex items-center gap-4 sm:gap-6 text-sm" aria-label="Sections">
-      <a href="#projects" class="hidden sm:inline" style="color:var(--muted);text-decoration:none">Projects</a>
-      <a href="#stack" class="hidden sm:inline" style="color:var(--muted);text-decoration:none">Stack</a>
-      <a href="#education" class="hidden sm:inline" style="color:var(--muted);text-decoration:none">Education</a>
-      <a href="#contact" style="color:var(--muted);text-decoration:none">Contact</a>
-      <button id="theme-toggle" type="button" class="chip" style="cursor:pointer" aria-label="Switch between light and dark theme">Theme</button>
-    </nav>
-  </header>
+<svg xmlns="http://www.w3.org/2000/svg" class="sprite" width="0" height="0" aria-hidden="true" focusable="false"><symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></symbol><symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></symbol><symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></symbol><symbol id="i-file-text" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /><path d="M14 2v4a2 2 0 0 0 2 2h4" /><path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" /></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></symbol></svg>
+
+<header class="topbar">
+  <div class="wrap topbar__in">
+    <a class="brand" href="#top" aria-label="Khaled Ali Elsayed, back to top">
+      <span class="brand__mark" aria-hidden="true">KA</span>
+      <span class="brand__name">Khaled Ali Elsayed</span>
+    </a>
+    <div class="topbar__right">
+      <nav class="topnav" aria-label="Sections">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to dark theme">
+        <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
 
   <!-- Hero -->
-  <section id="top" class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-8 pb-16 sm:pt-14 sm:pb-24">
-    <div class="lg:col-span-6 min-w-0">
-      <div class="flex items-center gap-4 mb-6">
-        <img class="avatar" src="khaled.jpg" width="112" height="112" alt="Portrait of Khaled Ali Elsayed">
-        <p class="label">Backend developer · Cairo, Egypt</p>
+  <section class="hero" id="top">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <div class="identity">
+          <img class="avatar" src="khaled.jpg" width="112" height="112" alt="Portrait of Khaled Ali Elsayed" fetchpriority="high">
+          <div class="identity__text">
+            <span class="pill"><span class="pill__dot" aria-hidden="true"></span>Open to backend roles</span>
+            <span class="where"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>Cairo, Egypt</span>
+          </div>
+        </div>
+        <h1>Khaled Ali Elsayed</h1>
+        <p class="lead">Backend developer. I build APIs with auth, payments, queues and tests.</p>
+        <p class="intro">Node.js, NestJS and FastAPI on MongoDB and PostgreSQL. I study Computer Science at Cairo University, graduate in January 2027, and I am looking for a backend developer role in Egypt.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="Khaled_Ali_Elsayed_CV.pdf" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-file-text"/></svg>View CV</a>
+          <a class="btn" href="#contact"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Contact me</a>
+        </div>
+        <div class="socials">
+          <a class="btn btn--sm" href="https://github.com/KhaledAli1234" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+          <a class="btn btn--sm" href="https://www.linkedin.com/in/khaled-ali-48a3a7357" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+        </div>
       </div>
-      <h1 class="font-display font-extrabold text-5xl sm:text-6xl leading-[0.98]">Khaled Ali Elsayed</h1>
-      <p class="font-display text-2xl sm:text-3xl font-semibold mt-5 leading-tight" style="color:var(--ink)">I build APIs with auth, payments, queues and tests.</p>
-      <p class="mt-5 max-w-xl" style="color:var(--muted)">
-        Node.js, NestJS and FastAPI on MongoDB and PostgreSQL. I study Computer Science at Cairo University, graduate in January 2027, and I am looking for a backend developer role in Egypt.
-      </p>
-      <div class="flex flex-wrap gap-3 mt-8">
-        <a class="btn btn-primary" href="https://github.com/KhaledAli1234" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/khaled-ali-48a3a7357" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="Khaled_Ali_Elsayed_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-        <a class="btn" href="#contact">Contact</a>
-      </div>
-    </div>
 
-    <div class="lg:col-span-6 min-w-0">
-      <div class="code p-5 sm:p-6" role="img" aria-label="An HTTP response describing Khaled Ali: backend developer, languages, frameworks, databases, education and availability">
-<pre style="margin:0;font:inherit"><span class="d">GET</span> /khaled-ali
-<span class="ok">HTTP/1.1 200 OK</span>
-<span class="d">Content-Type: application/json</span>
-
-{
-  <span class="k">"role"</span>: <span class="s">"Backend Developer"</span>,
-  <span class="k">"languages"</span>: [<span class="s">"JavaScript"</span>, <span class="s">"TypeScript"</span>, <span class="s">"Python"</span>],
-  <span class="k">"frameworks"</span>: [<span class="s">"NestJS"</span>, <span class="s">"Express"</span>, <span class="s">"FastAPI"</span>],
-  <span class="k">"databases"</span>: [<span class="s">"MongoDB"</span>, <span class="s">"PostgreSQL"</span>, <span class="s">"Redis"</span>],
-  <span class="k">"education"</span>: <span class="s">"B.Sc. Computer Science, Cairo University"</span>,
-  <span class="k">"graduates"</span>: <span class="s">"2027-01"</span>,
+      <figure class="api" aria-label="A summary of Khaled Ali Elsayed written as an HTTP response">
+        <div class="api__bar">
+          <span class="api__req"><span class="api__method">GET</span><span>/khaled-ali</span></span>
+          <span class="api__status">200 OK</span>
+        </div>
+<pre class="api__body"><code>{
+  <span class="k">"role"</span>: "Backend Developer",
+  <span class="k">"location"</span>: "Cairo, Egypt",
+  <span class="k">"languages"</span>: [
+    "JavaScript", "TypeScript", "Python"
+  ],
+  <span class="k">"frameworks"</span>: [
+    "NestJS", "Express", "FastAPI"
+  ],
+  <span class="k">"databases"</span>: [
+    "MongoDB", "PostgreSQL", "Redis"
+  ],
+  <span class="k">"graduating"</span>: "2027-01",
   <span class="k">"open_to_work"</span>: <span class="ok">true</span>
-}</pre>
-      </div>
+}</code></pre>
+      </figure>
     </div>
   </section>
 
   <!-- Projects -->
-  <section id="projects" class="pb-16 sm:pb-24">
-    <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 pb-6">
-      <h2 class="font-display font-bold text-3xl sm:text-4xl">Projects</h2>
-      <p class="label">GET /projects · 5 results</p>
-    </div>
-
-    <!-- Featured: TeamFlow -->
-    <article class="rule py-8 sm:py-10 grid lg:grid-cols-12 gap-6 lg:gap-10">
-      <div class="lg:col-span-4 min-w-0 flex flex-col gap-3">
-        <p class="label">/teamflow</p>
-        <p class="status tabnum">200 · 43 endpoints · 126 tests</p>
-        <p class="text-sm tabnum" style="color:var(--muted)">Oct 2026 – Nov 2026</p>
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="projects-title">Projects</h2>
+        <span class="endpoint">GET /projects · 5 results</span>
       </div>
-      <div class="lg:col-span-8 min-w-0">
-        <h3 class="font-display font-bold text-2xl sm:text-3xl">TeamFlow</h3>
-        <p class="mt-3 max-w-2xl" style="color:var(--muted)">A project and task management API in the style of Trello and Jira. Teams, projects, tasks, comments, an activity log, notifications and progress dashboards, with role-based permissions at team and project level.</p>
-        <ul class="bullets mt-5 grid gap-2 max-w-2xl">
-          <li>Refresh token rotation with family revocation: reusing an old token revokes every session for that user.</li>
-          <li>Argon2id password hashing and account lockout after repeated failed logins.</li>
-          <li>Row locks with <span class="font-mono text-sm">SELECT … FOR UPDATE</span> so concurrent requests cannot leave a team without an admin.</li>
-          <li>Password-reset email sent by a Celery worker through Redis, off the request path.</li>
-          <li>Router → Service → Repository layers, Alembic migrations, GitHub Actions CI and a Docker Compose setup.</li>
-        </ul>
-        <div class="flex flex-wrap gap-2 mt-6">
-          <span class="chip">FastAPI</span><span class="chip">PostgreSQL 16</span><span class="chip">SQLAlchemy 2.0</span><span class="chip">Alembic</span><span class="chip">Celery</span><span class="chip">Redis</span><span class="chip">pytest</span><span class="chip">Docker</span>
-        </div>
-        <p class="mt-6"><a class="link font-semibold" href="https://github.com/KhaledAli1234/teamflow" target="_blank" rel="noopener">View on GitHub</a></p>
+
+      <div class="projects">
+
+        <article class="project">
+          <div>
+            <h3 class="project__name">TeamFlow</h3>
+            <dl class="facts">
+              <div><dt>Period</dt><dd>Oct 2026 – Nov 2026</dd></div>
+              <div><dt>Scale</dt><dd>40+ endpoints, 120+ tests</dd></div>
+            </dl>
+          </div>
+          <div>
+            <p class="project__desc">A project and task management API in the style of Trello and Jira: teams, projects, tasks, comments, an activity log, notifications and dashboards, with role-based permissions at team and project level.</p>
+            <ul class="points">
+              <li>Refresh token rotation with family revocation: reusing an old token revokes its whole token family.</li>
+              <li>Argon2id password hashing and account lockout after repeated failed logins.</li>
+              <li>Row locks (<code class="code-inline">SELECT … FOR UPDATE</code>) keep concurrent requests from leaving a team without an admin.</li>
+              <li>Celery and Redis send emails off the request path. GitHub Actions runs Ruff, Alembic and pytest on every push.</li>
+            </ul>
+            <div class="tags"><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">Alembic</span><span class="tag">Celery</span><span class="tag">Redis</span><span class="tag">pytest</span><span class="tag">Docker</span></div>
+            <div class="project__links"><a class="btn btn--sm" href="https://github.com/KhaledAli1234/teamflow" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>View on GitHub<svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div>
+            <h3 class="project__name">Auto Care</h3>
+            <dl class="facts">
+              <div><dt>Period</dt><dd>Feb 2026 – Jul 2026</dd></div>
+              <div><dt>Type</dt><dd>Team graduation project</dd></div>
+              <div><dt>My part</dt><dd>NestJS backend, AI assistant integration, Docker</dd></div>
+              <div><dt>Scale</dt><dd>78 endpoints, 14 modules</dd></div>
+            </dl>
+          </div>
+          <div>
+            <p class="project__desc">A car management platform: a React Native app records trips, machine learning services score the driving and predict vehicle health and fuel use, and an assistant answers from the driver's own data.</p>
+            <ul class="points">
+              <li>I built the NestJS backend: JWT authentication with role-based access, plus vehicle, maintenance, fuel-log and GPS trip modules.</li>
+              <li>I added support tickets and Socket.IO notifications between drivers and admins.</li>
+              <li>I integrated the Flask and Groq assistant (Llama 3.3 70B) as a microservice and containerized every service with Docker.</li>
+              <li>Three models score each trip: Random Forest for driving style, Linear Regression for vehicle health and Gradient Boosting for fuel use.</li>
+            </ul>
+            <div class="tags"><span class="tag">NestJS</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Socket.IO</span><span class="tag">React Native</span><span class="tag">Flask</span><span class="tag">scikit-learn</span><span class="tag">Docker</span></div>
+            <div class="project__links"><a class="btn btn--sm" href="https://github.com/KhaledAli1234/Auto-Care" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>View on GitHub<svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div>
+            <h3 class="project__name">E-Commerce API</h3>
+            <dl class="facts">
+              <div><dt>Period</dt><dd>Oct 2025 – Nov 2025</dd></div>
+              <div><dt>Scale</dt><dd>59 endpoints</dd></div>
+            </dl>
+          </div>
+          <div>
+            <p class="project__desc">A modular e-commerce API with a catalog, cart, coupons and orders, paid by card or cash.</p>
+            <ul class="points">
+              <li>Stripe Checkout with a webhook that moves paid orders from Pending to Placed, and automatic refunds on cancellation.</li>
+              <li>Percent and amount coupons tracked per customer and released when an order is cancelled.</li>
+              <li>Redis-cached product listing with a custom TTL decorator, live stock updates over Socket.IO and a GraphQL orders query.</li>
+            </ul>
+            <div class="tags"><span class="tag">NestJS</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Stripe</span><span class="tag">GraphQL</span><span class="tag">Socket.IO</span><span class="tag">AWS S3</span></div>
+            <div class="project__links"><a class="btn btn--sm" href="https://github.com/KhaledAli1234/Ecommerce-Nest" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>View on GitHub<svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div>
+            <h3 class="project__name">Social App</h3>
+            <dl class="facts">
+              <div><dt>Period</dt><dd>Sep 2025 – Oct 2025</dd></div>
+              <div><dt>APIs</dt><dd>REST, GraphQL, Socket.IO</dd></div>
+            </dl>
+          </div>
+          <div>
+            <p class="project__desc">A social network backend with posts, comments, friends and real-time chat.</p>
+            <ul class="points">
+              <li>Posts with public, friends-only and only-me visibility, likes and threaded comments.</li>
+              <li>Friend requests, blocking, direct messages and group chat rooms over Socket.IO.</li>
+              <li>Two-step verification, Google sign-in, admin roles, and S3 uploads with pre-signed URLs.</li>
+            </ul>
+            <div class="tags"><span class="tag">Express</span><span class="tag">TypeScript</span><span class="tag">MongoDB</span><span class="tag">GraphQL</span><span class="tag">Socket.IO</span><span class="tag">Zod</span><span class="tag">AWS S3</span></div>
+            <div class="project__links"><a class="btn btn--sm" href="https://github.com/KhaledAli1234/Social_App" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>View on GitHub<svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div>
+            <h3 class="project__name">Sara7a</h3>
+            <dl class="facts">
+              <div><dt>Period</dt><dd>Aug 2025 – Sep 2025</dd></div>
+              <div><dt>APIs</dt><dd>REST</dd></div>
+            </dl>
+          </div>
+          <div>
+            <p class="project__desc">An anonymous messaging API with a focus on account security.</p>
+            <ul class="points">
+              <li>Email confirmation and password reset with hashed OTP codes.</li>
+              <li>Token revocation on logout and a 5-minute lock after 5 wrong verification codes.</li>
+              <li>Encrypted phone numbers, Joi validation and image uploads to Cloudinary.</li>
+            </ul>
+            <div class="tags"><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">JWT</span><span class="tag">Joi</span><span class="tag">Cloudinary</span></div>
+            <div class="project__links"><a class="btn btn--sm" href="https://github.com/KhaledAli1234/Sara7a_App" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>View on GitHub<svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></div>
+          </div>
+        </article>
+
       </div>
-    </article>
-
-    <!-- Featured: Auto-Care -->
-    <article class="rule py-8 sm:py-10 grid lg:grid-cols-12 gap-6 lg:gap-10">
-      <div class="lg:col-span-4 min-w-0 flex flex-col gap-3">
-        <p class="label">/auto-care</p>
-        <p class="status tabnum">200 · 78 endpoints · 14 modules</p>
-        <p class="text-sm tabnum" style="color:var(--muted)">Feb 2026 – Jul 2026 · Team graduation project</p>
-      </div>
-      <div class="lg:col-span-8 min-w-0">
-        <h3 class="font-display font-bold text-2xl sm:text-3xl">Auto Care</h3>
-        <p class="mt-3 max-w-2xl" style="color:var(--muted)">A full-stack car management platform. The phone records a trip, three machine learning services score the driving, predict vehicle health and estimate fuel use, and a chatbot answers questions from the driver's own data.</p>
-        <ul class="bullets mt-5 grid gap-2 max-w-2xl">
-          <li>I built the NestJS backend: JWT authentication with role-based access, and the vehicle, maintenance, fuel-log and GPS trip modules.</li>
-          <li>I also built support tickets and Socket.IO notifications between drivers and admins.</li>
-          <li>I integrated the Flask and Groq assistant (Llama 3.3 70B) as a microservice and containerized every service with Docker.</li>
-          <li>A unified service fans each trip out to three models: Random Forest for driving style, Linear Regression for vehicle health and Gradient Boosting for fuel use.</li>
-          <li>The client is a React Native app built with Expo that also runs on the web.</li>
-        </ul>
-        <div class="flex flex-wrap gap-2 mt-6">
-          <span class="chip">NestJS</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">Socket.IO</span><span class="chip">Expo</span><span class="chip">Flask</span><span class="chip">scikit-learn</span><span class="chip">Docker</span>
-        </div>
-        <p class="mt-6"><a class="link font-semibold" href="https://github.com/KhaledAli1234/Auto-Care" target="_blank" rel="noopener">View on GitHub</a></p>
-      </div>
-    </article>
-
-    <!-- Three smaller projects -->
-    <div class="rule pt-8 sm:pt-10 grid lg:grid-cols-3 gap-5">
-
-      <article class="min-w-0 flex flex-col p-6 border rounded-lg" style="background:var(--surface);border-color:var(--line)">
-        <p class="label">/ecommerce-nest</p>
-        <p class="status tabnum mt-2">200 · 59 endpoints</p>
-        <p class="text-sm tabnum" style="color:var(--muted)">Oct 2025 – Nov 2025</p>
-        <h3 class="font-display font-bold text-xl mt-4">E-Commerce API</h3>
-        <p class="mt-2 text-[0.95rem]" style="color:var(--muted)">Catalog, cart, coupons and orders with card or cash payment.</p>
-        <ul class="bullets mt-4 grid gap-2 text-[0.95rem]">
-          <li>Stripe Checkout with a webhook that moves orders from pending to placed, and refunds on cancellation.</li>
-          <li>Percent and amount coupons with a per-user usage limit.</li>
-          <li>Redis-cached product listing using a custom TTL decorator.</li>
-          <li>Live stock updates over Socket.IO and a GraphQL orders query.</li>
-        </ul>
-        <div class="flex flex-wrap gap-2 mt-5">
-          <span class="chip">NestJS</span><span class="chip">MongoDB</span><span class="chip">Stripe</span><span class="chip">AWS S3</span>
-        </div>
-        <p class="mt-auto pt-5"><a class="link font-semibold" href="https://github.com/KhaledAli1234/Ecommerce-Nest" target="_blank" rel="noopener">View on GitHub</a></p>
-      </article>
-
-      <article class="min-w-0 flex flex-col p-6 border rounded-lg" style="background:var(--surface);border-color:var(--line)">
-        <p class="label">/social-app</p>
-        <p class="status tabnum mt-2">200 · REST + GraphQL</p>
-        <p class="text-sm tabnum" style="color:var(--muted)">Sep 2025 – Oct 2025</p>
-        <h3 class="font-display font-bold text-xl mt-4">Social App</h3>
-        <p class="mt-2 text-[0.95rem]" style="color:var(--muted)">A social network backend with real-time chat.</p>
-        <ul class="bullets mt-4 grid gap-2 text-[0.95rem]">
-          <li>Posts with visibility levels, likes and threaded comments.</li>
-          <li>Friend requests, blocking, direct messages and group chat rooms over Socket.IO.</li>
-          <li>Two-step verification, Google sign-in and admin roles.</li>
-          <li>Uploads to S3 with pre-signed download URLs.</li>
-        </ul>
-        <div class="flex flex-wrap gap-2 mt-5">
-          <span class="chip">Express 5</span><span class="chip">TypeScript</span><span class="chip">MongoDB</span><span class="chip">Zod</span>
-        </div>
-        <p class="mt-auto pt-5"><a class="link font-semibold" href="https://github.com/KhaledAli1234/Social_App" target="_blank" rel="noopener">View on GitHub</a></p>
-      </article>
-
-      <article class="min-w-0 flex flex-col p-6 border rounded-lg" style="background:var(--surface);border-color:var(--line)">
-        <p class="label">/sara7a-app</p>
-        <p class="status tabnum mt-2">200 · REST</p>
-        <p class="text-sm tabnum" style="color:var(--muted)">Aug 2025 – Sep 2025</p>
-        <h3 class="font-display font-bold text-xl mt-4">Sara7a</h3>
-        <p class="mt-2 text-[0.95rem]" style="color:var(--muted)">An anonymous messaging API focused on account security.</p>
-        <ul class="bullets mt-4 grid gap-2 text-[0.95rem]">
-          <li>Email confirmation and password reset with hashed OTP codes.</li>
-          <li>Token revocation on logout and a 5-minute ban after 5 failed logins.</li>
-          <li>Encrypted phone numbers, Joi validation and rate limiting.</li>
-          <li>Image uploads to Cloudinary and a scheduled cleanup of expired tokens.</li>
-        </ul>
-        <div class="flex flex-wrap gap-2 mt-5">
-          <span class="chip">Express 5</span><span class="chip">MongoDB</span><span class="chip">Joi</span><span class="chip">Cloudinary</span>
-        </div>
-        <p class="mt-auto pt-5"><a class="link font-semibold" href="https://github.com/KhaledAli1234/Sara7a_App" target="_blank" rel="noopener">View on GitHub</a></p>
-      </article>
-
     </div>
   </section>
 
-  <!-- Stack -->
-  <section id="stack" class="rule pt-10 pb-16 sm:pb-24">
-    <h2 class="font-display font-bold text-3xl sm:text-4xl pb-8">Stack</h2>
-    <dl class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-      <div class="min-w-0"><dt class="label mb-3">Languages</dt><dd class="flex flex-wrap gap-2"><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Python</span><span class="chip">Java</span><span class="chip">SQL</span></dd></div>
-      <div class="min-w-0"><dt class="label mb-3">Runtime and frameworks</dt><dd class="flex flex-wrap gap-2"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">NestJS</span><span class="chip">FastAPI</span><span class="chip">Flask</span></dd></div>
-      <div class="min-w-0"><dt class="label mb-3">Databases and caching</dt><dd class="flex flex-wrap gap-2"><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">SQLAlchemy</span><span class="chip">Alembic</span></dd></div>
-      <div class="min-w-0"><dt class="label mb-3">APIs and real-time</dt><dd class="flex flex-wrap gap-2"><span class="chip">REST</span><span class="chip">GraphQL</span><span class="chip">Socket.IO</span><span class="chip">Celery</span><span class="chip">Stripe</span></dd></div>
-      <div class="min-w-0"><dt class="label mb-3">Auth and security</dt><dd class="flex flex-wrap gap-2"><span class="chip">JWT</span><span class="chip">Refresh token rotation</span><span class="chip">Argon2</span><span class="chip">RBAC</span><span class="chip">Rate limiting</span></dd></div>
-      <div class="min-w-0"><dt class="label mb-3">Testing and DevOps</dt><dd class="flex flex-wrap gap-2"><span class="chip">Pytest</span><span class="chip">Ruff</span><span class="chip">GitHub Actions</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Postman</span><span class="chip">Swagger</span><span class="chip">Render</span><span class="chip">Vercel</span></dd></div>
-    </dl>
+  <!-- Skills -->
+  <section class="section" id="skills" aria-labelledby="skills-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="skills-title">Skills</h2>
+        <span class="endpoint">GET /skills</span>
+      </div>
+      <div class="skills">
+        <div class="group"><h3>Languages</h3><div class="tags"><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">SQL</span></div></div>
+        <div class="group"><h3>Runtime and frameworks</h3><div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">NestJS</span><span class="tag">FastAPI</span><span class="tag">Flask</span></div></div>
+        <div class="group"><h3>Databases and caching</h3><div class="tags"><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">SQLAlchemy</span><span class="tag">Alembic</span></div></div>
+        <div class="group"><h3>APIs and real-time</h3><div class="tags"><span class="tag">REST</span><span class="tag">GraphQL</span><span class="tag">Socket.IO</span><span class="tag">Celery</span><span class="tag">Stripe</span></div></div>
+        <div class="group"><h3>Auth and security</h3><div class="tags"><span class="tag">JWT</span><span class="tag">Refresh token rotation</span><span class="tag">Argon2</span><span class="tag">RBAC</span><span class="tag">Rate limiting</span></div></div>
+        <div class="group"><h3>Testing and DevOps</h3><div class="tags"><span class="tag">Pytest</span><span class="tag">Ruff</span><span class="tag">GitHub Actions</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">Postman</span><span class="tag">Swagger</span><span class="tag">Render</span><span class="tag">Vercel</span></div></div>
+      </div>
+    </div>
   </section>
 
   <!-- Education -->
-  <section id="education" class="rule pt-10 pb-16 sm:pb-24">
-    <h2 class="font-display font-bold text-3xl sm:text-4xl pb-8">Education</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="min-w-0">
-        <p class="label tabnum">Sep 2022 – Jan 2027 (expected)</p>
-        <h3 class="font-display font-bold text-xl mt-2">B.Sc. Computer Science</h3>
-        <p style="color:var(--muted)">Faculty of Science, Cairo University</p>
-        <p class="mt-3 text-[0.95rem]" style="color:var(--muted)">Relevant coursework: data structures, object-oriented programming, computer networks, artificial intelligence and compilers.</p>
+  <section class="section" id="education" aria-labelledby="education-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="education-title">Education</h2>
+        <span class="endpoint">GET /education</span>
       </div>
-      <div class="min-w-0">
-        <p class="label tabnum">May – November 2025</p>
-        <h3 class="font-display font-bold text-xl mt-2">Backend Web Development Diploma</h3>
-        <p style="color:var(--muted)">Route Academy</p>
-        <p class="mt-3 text-[0.95rem]" style="color:var(--muted)">Backend development with Node.js, Express, NestJS and MongoDB.</p>
+      <div class="edu">
+        <div>
+          <span class="label">Sep 2022 – Jan 2027 (expected)</span>
+          <h3>B.Sc. Computer Science</h3>
+          <p>Faculty of Science, Cairo University</p>
+          <p class="note">Relevant coursework: data structures, object-oriented programming, computer networks, artificial intelligence and compilers.</p>
+        </div>
+        <div>
+          <span class="label">May 2025 – Nov 2025</span>
+          <h3>Backend Web Development Diploma</h3>
+          <p>Route Academy</p>
+          <p class="note">Backend development with Node.js, Express, NestJS and MongoDB.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="rule pt-10 pb-16 sm:pb-24">
-    <h2 class="font-display font-bold text-3xl sm:text-4xl">Contact</h2>
-    <p class="mt-3 max-w-xl" style="color:var(--muted)">I am open to backend developer roles in Egypt. You can reach me by email or phone.</p>
-    <div class="mt-6 flex flex-wrap items-center gap-3">
-      <span id="email" class="code px-4 py-3 select-all" style="display:inline-block">kemam982@gmail.com</span>
-      <button id="copy-email" type="button" class="btn">Copy email</button>
-      <span id="phone" class="code px-4 py-3 select-all" style="display:inline-block">01159290022</span>
-      <a class="btn btn-primary" href="Khaled_Ali_Elsayed_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-    </div>
-    <p id="copy-status" class="mt-3 text-sm" style="color:var(--muted)" role="status" aria-live="polite"></p>
-    <div class="flex flex-wrap gap-3 mt-4">
-      <a class="btn" href="https://github.com/KhaledAli1234" target="_blank" rel="noopener">github.com/KhaledAli1234</a>
-      <a class="btn" href="https://www.linkedin.com/in/khaled-ali-48a3a7357" target="_blank" rel="noopener">linkedin.com/in/khaled-ali-48a3a7357</a>
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="contact-title">Contact</h2>
+        <span class="endpoint">POST /contact</span>
+      </div>
+      <div class="contact">
+      <p class="contact__lead">I am open to backend developer roles in Egypt. Email is the fastest way to reach me.</p>
+      <div class="rows">
+        <div class="row">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+          <div class="row__text"><span class="row__label">Email</span><a class="row__value" href="mailto:kemam982@gmail.com">kemam982@gmail.com</a></div>
+          <button class="btn btn--sm" type="button" data-copy="kemam982@gmail.com" data-label="email"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+        </div>
+        <div class="row">
+          <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+          <div class="row__text"><span class="row__label">Phone</span><a class="row__value" href="tel:+201159290022">01159290022</a></div>
+          <button class="btn btn--sm" type="button" data-copy="01159290022" data-label="phone number"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+        </div>
+        <div class="row">
+          <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+          <div class="row__text"><span class="row__label">LinkedIn</span><a class="row__value" href="https://www.linkedin.com/in/khaled-ali-48a3a7357" target="_blank" rel="noopener">linkedin.com/in/khaled-ali-48a3a7357</a></div>
+          <a class="btn btn--sm" href="https://www.linkedin.com/in/khaled-ali-48a3a7357" target="_blank" rel="noopener" aria-label="Open LinkedIn profile"><span>Open</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+        </div>
+        <div class="row">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+          <div class="row__text"><span class="row__label">GitHub</span><a class="row__value" href="https://github.com/KhaledAli1234" target="_blank" rel="noopener">github.com/KhaledAli1234</a></div>
+          <a class="btn btn--sm" href="https://github.com/KhaledAli1234" target="_blank" rel="noopener" aria-label="Open GitHub profile"><span>Open</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+        </div>
+        <div class="row">
+          <svg class="icon" aria-hidden="true"><use href="#i-file-text"/></svg>
+          <div class="row__text"><span class="row__label">CV</span><a class="row__value" href="Khaled_Ali_Elsayed_CV.pdf" target="_blank" rel="noopener">Khaled_Ali_Elsayed_CV.pdf</a></div>
+          <a class="btn btn--sm" href="Khaled_Ali_Elsayed_CV.pdf" target="_blank" rel="noopener" aria-label="Open CV as PDF"><span>Open</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+        </div>
+      </div>
+      </div>
     </div>
   </section>
 
-  <footer class="rule py-8 flex flex-wrap justify-between gap-2 text-sm" style="color:var(--muted)">
-    <span>© 2026 Khaled Ali Elsayed</span>
-    <span class="label">Built with HTML and Tailwind</span>
-  </footer>
+</main>
 
-</div>
+<footer class="footer">
+  <div class="wrap footer__in">
+    <span>© 2026 Khaled Ali Elsayed</span>
+    <a href="#top">Back to top</a>
+  </div>
+</footer>
+
+<p class="sr-only" id="announce" role="status" aria-live="polite"></p>
 
 <script>
   (function () {
     var root = document.documentElement;
+    var toggle = document.getElementById('theme-toggle');
+    var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
-    // Theme toggle: follows the system until the viewer picks one.
-    try {
-      var saved = localStorage.getItem('portfolio-theme');
-      if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
-    } catch (e) {}
-    document.getElementById('theme-toggle').addEventListener('click', function () {
-      var current = root.getAttribute('data-theme') ||
-        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      var next = current === 'dark' ? 'light' : 'dark';
+    function effectiveTheme() {
+      return root.getAttribute('data-theme') || (mq && mq.matches ? 'dark' : 'light');
+    }
+    function syncToggle() {
+      toggle.setAttribute('aria-label', effectiveTheme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+    }
+    toggle.addEventListener('click', function () {
+      var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+      syncToggle();
     });
+    if (mq && mq.addEventListener) mq.addEventListener('change', syncToggle);
+    syncToggle();
 
-    // Smooth in-page navigation that also works inside the viewer frame.
+    /* In-page links scroll smoothly and keep working inside embedded viewers. */
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
       a.addEventListener('click', function (e) {
-        var el = document.getElementById(a.getAttribute('href').slice(1));
-        if (!el) return;
+        var id = a.getAttribute('href').slice(1);
+        var target = id ? document.getElementById(id) : null;
+        if (!target) return;
         e.preventDefault();
-        var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        el.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+        target.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
       });
     });
 
-    // Copy email with a fallback that selects the text.
-    var emailEl = document.getElementById('email');
-    var statusEl = document.getElementById('copy-status');
-    function selectEmail() {
-      var range = document.createRange();
-      range.selectNodeContents(emailEl);
-      var sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
+    /* Highlight the nav link of the section in view. */
+    var links = {};
+    document.querySelectorAll('.topnav a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          Object.keys(links).forEach(function (k) { links[k].removeAttribute('aria-current'); });
+          if (links[en.target.id]) links[en.target.id].setAttribute('aria-current', 'true');
+        });
+      }, { rootMargin: '-35% 0px -60% 0px' });
+      Object.keys(links).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
     }
-    document.getElementById('copy-email').addEventListener('click', function () {
-      var text = emailEl.textContent.trim();
-      var done = function () { statusEl.textContent = 'Email copied.'; };
-      var fail = function () { selectEmail(); statusEl.textContent = 'Email selected. Press Ctrl+C or Cmd+C to copy.'; };
-      try {
-        navigator.clipboard.writeText(text).then(done, fail);
-      } catch (e) { fail(); }
+
+    /* Copy buttons with a text fallback. */
+    var announce = document.getElementById('announce');
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+      var label = btn.querySelector('span');
+      var original = label.textContent;
+      var timer;
+      function done(ok) {
+        label.textContent = ok ? 'Copied' : 'Select it';
+        announce.textContent = ok ? 'Copied the ' + btn.getAttribute('data-label') : 'Select the ' + btn.getAttribute('data-label') + ' and copy it';
+        clearTimeout(timer);
+        timer = setTimeout(function () { label.textContent = original; announce.textContent = ''; }, 1800);
+      }
+      btn.addEventListener('click', function () {
+        var text = btn.getAttribute('data-copy');
+        var fallback = function () {
+          var value = btn.closest('.row').querySelector('.row__value');
+          var range = document.createRange();
+          range.selectNodeContents(value);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          done(false);
+        };
+        try {
+          navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+        } catch (e) { fallback(); }
+      });
     });
   })();
 </script>
